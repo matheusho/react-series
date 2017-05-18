@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { changeValue } from './fieldActions';
 
 class Field extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = { value: props.initialValue };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
 
   render() {
     return (
@@ -19,8 +11,8 @@ class Field extends Component {
         <label>{this.props.value}</label>
         <br />
         <input
-          onChange={this.handleChange}
           value={this.props.value}
+          onChange={this.props.changeValue}
         />
       </div>
     );
@@ -31,4 +23,8 @@ function mapStateToprops(state) {
   return { value: state.field.value };
 }
 
-export default connect(mapStateToprops)(Field);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ changeValue }, dispatch);
+}
+
+export default connect(mapStateToprops, mapDispatchToProps)(Field);

@@ -15,12 +15,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js[x]$/,
+        test: /.js[x]?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react'],
-          plugins: ['transform-object-rest-spread']
+          plugins:['transform-object-rest-spread']
         }
       }
     ]
