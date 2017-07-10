@@ -1,9 +1,10 @@
-import '../commons/templates/dependencies';
+import '../common/templates/dependencies';
 import React from 'react'; 
 
-import Header from '../commons/templates/header';
-import Footer from '../commons/templates/footer';
-import SideBar from '../commons/templates/sidebar';
+import Header from '../common/templates/header';
+import Footer from '../common/templates/footer';
+import SideBar from '../common/templates/sidebar';
+import Messages from '../common/msg/msg.jsx';
 import Routes from './routes';
 
 export default props => (
@@ -14,5 +15,6 @@ export default props => (
       <Routes />
     </main>
     <Footer></Footer>
+    <Messages />
   </div>
 );

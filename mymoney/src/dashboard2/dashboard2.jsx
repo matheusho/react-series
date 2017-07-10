@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import axios from 'axios';
 
-import { getSummary } from './dashboardActions';
 import Content from '../common/templates/content';
 import ContentHeader from '../common/templates/contentHeader';
 import ValueBox from '../common/widgets/valueBox';
 
-class Dashboard extends Component {
+const BASE_URL = 'https://flashy-couch.glitch.me/api';
+
+export default class Dashboard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      credit: 0,
+      debt: 0
+    };
+
+    this.getSummary = this.getSummary.bind(this);
   }
 
   componentWillMount() {
-    this.props.getSummary();
+    this.getSummary();
+  }
+
+  getSummary() {
+    axios.get(`${BASE_URL}/billing-cycles/summary`)
+      .then(resp => this.setState(resp.data));
   }
 
   render() {
-    const { credit, debt } = this.props.summary;
+    const { credit, debt } = this.state;
 
     return (
       <div>
-        <ContentHeader title="Dashboard" small="Versão 1.0" />
+        <ContentHeader title="Dashboard" small="Versão 2.0" />
         <Content>
           <ValueBox
             cols="12 4"
@@ -49,8 +60,3 @@ class Dashboard extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({ ...state.dashboard });
-const mapDispatchToProps = dispatch => bindActionCreators({ getSummary }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
