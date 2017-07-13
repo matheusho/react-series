@@ -5,24 +5,28 @@ import { toastr } from 'react-redux-toastr';
 import { showTabs, selectTab } from '../common/tab/tabActions';
 
 const BASE_URL = 'https://flashy-couch.glitch.me/api/billing-cycles';
+const INITIAL_VALUES = { credits: [{}], debts: [{}] };
 
-export function getList() {
-  const request = axios.get(BASE_URL);
+export const getList =() => {
+  const request = axios.get(BASE_URL, {
+    params: { sort: 'month' }
+  });
+
   return {
     type: 'BILLING_CYCLES_FETCHED',
     payload: request
   };
 }
 
-export function create (values) {
+export const create = (values) => {
   return submit('post', values);
 }
 
-export function update (values) {
+export const update = (values) => {
   return submit('put', values);
 }
 
-export function remove (values) {
+export const remove = (values) => {
   return submit('delete', values);
 }
 
@@ -40,7 +44,7 @@ function submit (method, values) {
   };
 }
 
-export function showUpdate (billingCycle) {
+export const showUpdate = (billingCycle) => {
   return [
     showTabs('tabUpdate'),
     selectTab('tabUpdate'),
@@ -48,7 +52,7 @@ export function showUpdate (billingCycle) {
   ];
 }
 
-export function showDelete (billingCycle) {
+export const showDelete = (billingCycle) => {
   return [
     showTabs('tabDelete'),
     selectTab('tabDelete'),
@@ -56,11 +60,11 @@ export function showDelete (billingCycle) {
   ];
 }
 
-export function init () {
+export const init = () => {
   return [
     showTabs('tabList', 'tabCreate'),
     selectTab('tabList'),
     getList(),
-    initialize('billingCycleForm')
+    initialize('billingCycleForm', INITIAL_VALUES)
   ];
 }

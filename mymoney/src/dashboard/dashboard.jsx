@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getSummary } from './dashboardActions';
-import Content from '../common/templates/content';
 import ContentHeader from '../common/templates/contentHeader';
-import ValueBox from '../common/widgets/valueBox';
+import Content from '../common/templates/content';
+import ValueBox from '../common/widgets/ValueBox';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Dashboard extends Component {
             cols="12 4"
             color="blue"
             icon="money"
-            value="R$ 10"
+            value={`R$ ${credit - debt}`}
             text="Total consolidado"
           />
         </Content>
