@@ -1,13 +1,14 @@
-import { toastr } from 'react-redux-toastr';
 import axios from 'axios';
-import { mymoney } from '../constants';
+import { toastr } from 'react-redux-toastr';
+
+import constants from '../constants';
 
 export const login = (values) => {
-	return submit(values, `${mymoney.AUTH_URL}/login`);
+	return submit(values, `${constants.OAPI_URL}/login`);
 };
 
 export const signup = (values) => {
-	return submit(values, `${mymoney.AUTH_URL}/signup`);
+	return submit(values, `${constants.OAPI_URL}/signup`);
 };
 
 export const submit = (values, url) => {
@@ -31,7 +32,7 @@ export const logout = () => {
 export const validateToken = (token) => {
 	return (dispatch) => {
 		if (token) {
-			axios.post(`${mymoney.AUTH_URL}/validate-token`, { token })
+			axios.post(`${constants.OAPI_URL}/validate-token`, { token })
 				.then((resp) => {
 					dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid });
 				})

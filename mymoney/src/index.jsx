@@ -8,7 +8,7 @@ import promise from 'redux-promise';
 import multi from 'redux-multi';
 import thunk from 'redux-thunk';
 
-import App from './main/app';
+import AuthOrApp from './main/authOrApp';
 import reducers from './main/reducers';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -20,7 +20,7 @@ const store = middlewares(createStore)(reducers, devTools);
 ReactDOM.render((
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <AuthOrApp />
     </HashRouter>
   </Provider>
 ), document.getElementById('app'));

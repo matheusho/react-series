@@ -7,16 +7,16 @@ import { login, signup } from './authActions';
 import Grid from '../common/layouts/grid';
 import Row from '../common/layouts/row';
 import If from '../common/operator/if';
-import Message from '../common/msg/msg';
-import Input from '../common/form/inputAuth';
+import Messages from '../common/msg/msg';
+import InputAuth from '../common/form/inputAuth';
 
 import './auth.css';
 
 class Auth extends Component {
 	constructor(props) {
-	  super(props);
-    this.state = { loginMode: true };
+    super(props);
 
+    this.state = { loginMode: true };
     this.changeMode = this.changeMode.bind(this);
   }
 
@@ -45,7 +45,7 @@ class Auth extends Component {
               name="name"
               placeholder="Nome"
               icon="user"
-              hide={loginMoode}
+              hide={loginMode}
             />
             <Field
               component={InputAuth}
@@ -53,7 +53,6 @@ class Auth extends Component {
               name="email"
               placeholder="E-mail"
               icon="envelope"
-              hide={loginMoode}
             />
             <Field
               component={InputAuth}
@@ -61,7 +60,6 @@ class Auth extends Component {
               name="password"
               placeholder="Senha"
               icon="lock"
-              hide={loginMoode}
             />
             <Field
               component={InputAuth}
@@ -69,7 +67,7 @@ class Auth extends Component {
               name="confirm_password"
               placeholder="Confirmação de senha"
               icon="lock"
-              hide={loginMoode}
+              hide={loginMode}
             />
             <Row>
               <Grid cols="4">

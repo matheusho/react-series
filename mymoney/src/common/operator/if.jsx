@@ -5,4 +5,4 @@ export default (props) => {
     return props.children;
   }
   return false;
-}
+};
