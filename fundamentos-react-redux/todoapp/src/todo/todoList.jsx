@@ -1,12 +1,13 @@
-import React from 'react';
-import IconButton from '../template/iconButton';
+import React from "react";
+import IconButton from "../template/iconButton";
 
 export default props => {
   const renderRows = () => {
     let list = props.list || [];
+
     return list.map((todo, i) => (
       <tr key={todo._id}>
-        <td className={todo.done ? '-has-done' : ''}>{todo.description}</td>
+        <td className={todo.done ? "-has-done" : ""}>{todo.description}</td>
         <td>
           <IconButton
             style="success"
@@ -29,7 +30,7 @@ export default props => {
         </td>
       </tr>
     ));
-  }
+  };
 
   return (
     <div>
@@ -40,10 +41,8 @@ export default props => {
             <th className="table-actions">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {renderRows()}
-        </tbody>
+        <tbody>{renderRows()}</tbody>
       </table>
     </div>
-  )
+  );
 };
