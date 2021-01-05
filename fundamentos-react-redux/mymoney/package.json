@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "admin-lte": "^2.3.11",
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
